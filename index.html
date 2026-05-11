@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ofe Bounty Uko — Content Creator & Social Media Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --cream: #f5f0e8;
+    --gold: #c9a84c;
+    --gold-light: #e8d08a;
+    --rust: #c45c2e;
+    --muted: #888;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999; opacity: 0.35;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  .hero-right {
+    background: linear-gradient(160deg,#1c1408 0%,#2e2008 50%,#0a0a0a 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--black) 0%, transparent 40%);
+  }
+  .hero-monogram {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 160px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(201,168,76,0.22);
+    letter-spacing: 8px;
+    z-index: 1;
+    animation: breathe 5s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%,100%{ opacity:.5; transform:scale(1); }
+    50%{ opacity:1; transform:scale(1.03); }
+  }
+  .hero-bg-word {
+    position: absolute; bottom:-20px; left:-6px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(90px,16vw,220px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.04);
+    pointer-events: none; white-space: nowrap;
+  }
+  .nav-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px; font-size: 12px; color: var(--gold);
+    opacity:0; animation: fadeUp .7s ease forwards .1s;
+  }
+  .hero-content { opacity:0; animation: fadeUp .8s ease forwards .4s; }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(50px,7.5vw,105px);
+    line-height: .88; letter-spacing: -1px; margin-bottom: 12px;
+  }
+  .hero-name span { display:block; color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(14px,1.8vw,19px);
+    color: var(--muted); margin-bottom: 28px; letter-spacing: 1px;
+  }
+  .hero-bio {
+    font-size: 15px; line-height: 1.9;
+    color: rgba(245,240,232,.72);
+    max-width: 500px; margin-bottom: 38px;
+  }
+  .hero-bio strong { color: var(--gold); font-weight:500; }
+  .cta-row { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn {
+    display:inline-block; padding:13px 28px;
+    font-family:'DM Sans',sans-serif; font-size:11px;
+    font-weight:500; letter-spacing:2.5px; text-transform:uppercase;
+    text-decoration:none; transition:all .3s; border:none; cursor:pointer;
+  }
+  .btn-gold { background:var(--gold); color:var(--black); }
+  .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); }
+  .btn-ghost {
+    background:transparent; border:1px solid rgba(201,168,76,.35); color:var(--cream);
+  }
+  .btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+  .hero-stats {
+    display:flex; gap:44px;
+    opacity:0; animation: fadeUp .8s ease forwards .75s;
+  }
+  .stat-num {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:40px; color:var(--gold); line-height:1;
+  }
+  .stat-label {
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--muted); margin-top:3px;
+  }
+  .gold-line {
+    position:absolute; bottom:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+
+  /* SHARED */
+  .wrap { max-width:1200px; margin:0 auto; padding:90px 50px; }
+  .lbl {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:11px; letter-spacing:5px; color:var(--gold);
+    margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  }
+  .lbl::after { content:''; width:44px; height:1px; background:var(--gold); opacity:.35; }
+  .big-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(34px,5vw,64px); line-height:1; margin-bottom:48px;
+  }
+
+  /* SERVICES */
+  .services-section { background:#050505; }
+  .services-grid {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:1px; background:rgba(201,168,76,.07);
+  }
+  .svc {
+    background:#050505; padding:38px 30px;
+    position:relative; overflow:hidden; transition:background .3s;
+  }
+  .svc:hover { background:#0e0b05; }
+  .svc::before {
+    content:''; position:absolute; top:0; left:0;
+    width:3px; height:0; background:var(--gold); transition:height .4s;
+  }
+  .svc:hover::before { height:100%; }
+  .svc-icon { font-size:28px; margin-bottom:18px; }
+  .svc-name {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:21px; letter-spacing:.5px; margin-bottom:10px;
+  }
+  .svc-desc { font-size:13px; line-height:1.75; color:rgba(245,240,232,.48); }
+
+  /* WORK */
+  .work-section { background:var(--black); }
+  .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+  .wcard-featured {
+    grid-column: 1 / -1;
+    border:1px solid rgba(201,168,76,.12);
+    background:#080806;
+    display:grid; grid-template-columns:220px 1fr;
+    transition:border-color .3s, transform .3s;
+  }
+  .wcard-featured:hover { border-color:rgba(201,168,76,.3); transform:translateY(-3px); }
+  .feat-side {
+    background:linear-gradient(160deg,#1c1408,#2e2008);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:20px; padding:30px 24px;
+  }
+  .feat-metric { text-align:center; }
+  .feat-num {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:48px; color:var(--gold); line-height:1;
+  }
+  .feat-meta { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+  .feat-divider { width:1px; height:30px; background:rgba(201,168,76,.2); }
+  .feat-body { padding:32px; }
+
+  .wcard {
+    border:1px solid rgba(201,168,76,.08);
+    background:#080806;
+    overflow:hidden;
+    transition:border-color .3s, transform .3s;
+  }
+  .wcard:hover { border-color:rgba(201,168,76,.28); transform:translateY(-3px); }
+  .wcard-top { height:3px; background:linear-gradient(90deg,var(--gold),var(--rust)); }
+  .wcard-body { padding:30px; }
+  .wtag {
+    display:inline-block; font-size:9px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--gold);
+    border:1px solid rgba(201,168,76,.22); padding:3px 9px; margin-bottom:16px;
+  }
+  .wclient {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:27px; line-height:1; margin-bottom:5px;
+  }
+  .wrole { font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
+  .wdesc { font-size:13px; line-height:1.75; color:rgba(245,240,232,.55); margin-bottom:22px; }
+  .wlink {
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold); text-decoration:none; font-weight:500; transition:gap .2s;
+  }
+  .wlink:hover { gap:13px; }
+  .wlink::after { content:'→'; }
+
+  /* ANALYTICS */
+  .analytics-section { background:#050505; }
+  .analytics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(201,168,76,.07); }
+  .ametric {
+    background:#050505; padding:36px 28px; text-align:center;
+    transition:background .3s;
+  }
+  .ametric:hover { background:#0d0a04; }
+  .ametric-num {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:54px; color:var(--gold); line-height:1; margin-bottom:6px;
+  }
+  .ametric-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+  .ametric-note { font-size:12px; color:rgba(201,168,76,.6); margin-top:6px; font-style:italic; }
+
+  /* SKILLS */
+  .skills-section { background:var(--black); }
+  .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px 64px; }
+  .skill-head { display:flex; justify-content:space-between; margin-bottom:9px; }
+  .skill-name { font-size:12px; letter-spacing:2px; text-transform:uppercase; }
+  .skill-pct { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--gold); }
+  .skill-track { height:1px; background:rgba(245,240,232,.08); position:relative; overflow:hidden; }
+  .skill-fill {
+    position:absolute; top:0; left:0; height:100%;
+    background:linear-gradient(90deg,var(--gold),var(--rust));
+    width:0; transition:width 1.4s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background:#050505; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .contact-bg-word {
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(60px,14vw,180px);
+    color:transparent;
+    -webkit-text-stroke:1px rgba(201,168,76,.04);
+    white-space:nowrap; pointer-events:none;
+  }
+  .contact-section .lbl { justify-content:center; }
+  .contact-section .lbl::after { display:none; }
+  .contact-sub { font-size:15px; color:var(--muted); margin-bottom:44px; }
+  .contact-chips { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:44px; }
+  .chip {
+    display:flex; align-items:center; gap:9px;
+    padding:13px 22px; border:1px solid rgba(201,168,76,.18);
+    color:var(--cream); text-decoration:none; font-size:12px;
+    letter-spacing:1.5px; transition:all .3s;
+  }
+  .chip:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-3px); }
+  .chip-icon { font-size:17px; }
+  .footer {
+    border-top:1px solid rgba(201,168,76,.08);
+    padding-top:28px; font-size:11px; color:rgba(136,136,136,.6);
+    letter-spacing:1px;
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .hero { grid-template-columns:1fr; }
+    .hero-right { display:none; }
+    .hero-left { padding:44px 28px; }
+    .services-grid { grid-template-columns:1fr; }
+    .work-grid { grid-template-columns:1fr; }
+    .wcard-featured { grid-template-columns:1fr; }
+    .feat-side { flex-direction:row; padding:24px; }
+    .analytics-grid { grid-template-columns:1fr 1fr; }
+    .skills-grid { grid-template-columns:1fr; }
+    .wrap { padding:60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="nav-tag">Portfolio — Content Creation & Social Media Strategy</div>
+    <div class="hero-content">
+      <h1 class="hero-name">Ofe Bounty<span>Uko</span></h1>
+      <p class="hero-subtitle">Content Creator · Social Media Strategist · AI Video Producer</p>
+      <p class="hero-bio">
+        I'm a <strong>creative content strategist</strong> who blends storytelling, AI-powered video production, and data-driven growth tactics to build brands that connect. From crafting scroll-stopping Reels to managing full social media identities, I turn <strong>ideas into impact</strong> — and the numbers prove it.
+      </p>
+      <div class="cta-row">
+        <a href="#work" class="btn btn-gold">View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Brands Managed</div>
+      </div>
+      <div>
+        <div class="stat-num">80%</div>
+        <div class="stat-label">New Audience Reach</div>
+      </div>
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Views Per Reel</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-monogram">OBU</div>
+  </div>
+  <div class="hero-bg-word">CREATE</div>
+  <div class="gold-line"></div>
+</section>
+
+<!-- SERVICES -->
+<div class="services-section">
+  <div class="wrap">
+    <div class="lbl">What I Do</div>
+    <h2 class="big-title">Services</h2>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-icon">🎬</div>
+        <div class="svc-name">Short-Form Video</div>
+        <p class="svc-desc">High-impact Reels and TikToks built to stop the scroll, grow reach, and drive engagement through compelling visual storytelling.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-name">AI-Powered Videos</div>
+        <p class="svc-desc">Cutting-edge AI and voice video production that elevates brand messaging — delivering polished, modern content at speed.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">📱</div>
+        <div class="svc-name">Social Media Management</div>
+        <p class="svc-desc">End-to-end management of Instagram and TikTok — from content strategy and posting to community engagement and analytics.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🎨</div>
+        <div class="svc-name">Content Strategy</div>
+        <p class="svc-desc">Thoughtful content planning aligned with brand goals, audience behaviour, and platform algorithms to maximise organic growth.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">✍️</div>
+        <div class="svc-name">Graphics & Posts</div>
+        <p class="svc-desc">Visually cohesive social media graphics and copy that reinforce brand identity and keep audiences engaged.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">📊</div>
+        <div class="svc-name">Audience Growth</div>
+        <p class="svc-desc">Strategic content built to expand reach beyond existing followers — turning new eyes into loyal brand communities.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<div class="work-section" id="work">
+  <div class="wrap">
+    <div class="lbl">Portfolio</div>
+    <h2 class="big-title">Selected Work</h2>
+    <div class="work-grid">
+
+      <!-- Personal Brand Featured -->
+      <div class="wcard-featured">
+        <div class="feat-side">
+          <div class="feat-metric">
+            <div class="feat-num">500+</div>
+            <div class="feat-meta">Views / Reel</div>
+          </div>
+          <div class="feat-divider"></div>
+          <div class="feat-metric">
+            <div class="feat-num">25×</div>
+            <div class="feat-meta">View Growth</div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <span class="wtag">Personal Brand</span>
+          <div class="wclient">@BountyOfe</div>
+          <div class="wrole">Creator · Instagram</div>
+          <p class="wdesc">Built and grew my personal Instagram content account from scratch. Through consistent Reels strategy and audience-focused storytelling, I scaled individual video views from 10–20 all the way to 400–500+ per Reel — a 25x growth in organic reach. My personal page is my creative lab where I test and refine what truly works.</p>
+          <a href="https://www.instagram.com/bountyofe?igsh=aWw3ZmNlOWhua2ky" target="_blank" class="wlink">View Profile</a>
+        </div>
+      </div>
+
+      <!-- Kaire Tribe -->
+      <div class="wcard">
+        <div class="wcard-top"></div>
+        <div class="wcard-body">
+          <span class="wtag">Client Work</span>
+          <div class="wclient">Kaire Tribe</div>
+          <div class="wrole">Content Strategist · Instagram</div>
+          <p class="wdesc">Served as content strategist for Kaire Tribe — developing creative direction, post concepts, and content calendar management to grow and maintain their Instagram presence and brand voice.</p>
+          <a href="https://www.instagram.com/kairetribe?igsh=MWFhdGx2b25rajQ1NQ==" target="_blank" class="wlink">View Page</a>
+        </div>
+      </div>
+
+      <!-- Belkeen -->
+      <div class="wcard">
+        <div class="wcard-top"></div>
+        <div class="wcard-body">
+          <span class="wtag">Client Work</span>
+          <div class="wclient">Belkeen Construction</div>
+          <div class="wrole">Social Media Manager · Instagram</div>
+          <p class="wdesc">Managed full social media operations for Belkeen Construction Nig Ltd — creating AI-generated videos, voice content, and strategic posts. Achieved 80.7% reach to non-followers, expanding brand awareness well beyond their existing audience.</p>
+          <a href="https://www.instagram.com/belkeen_construction_nig_ltd?igsh=MWg5b2o1MXgwbzRreA==" target="_blank" class="wlink">View Page</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ANALYTICS -->
+<div class="analytics-section">
+  <div class="wrap">
+    <div class="lbl">Real Results</div>
+    <h2 class="big-title">By The Numbers</h2>
+    <div class="analytics-grid">
+      <div class="ametric">
+        <div class="ametric-num">223</div>
+        <div class="ametric-label">Views · 30 Days</div>
+        <div class="ametric-note">Belkeen Instagram</div>
+      </div>
+      <div class="ametric">
+        <div class="ametric-num">141</div>
+        <div class="ametric-label">Accounts Reached</div>
+        <div class="ametric-note">Belkeen Instagram</div>
+      </div>
+      <div class="ametric">
+        <div class="ametric-num">80%</div>
+        <div class="ametric-label">Non-Follower Reach</div>
+        <div class="ametric-note">New audience growth</div>
+      </div>
+      <div class="ametric">
+        <div class="ametric-num">25×</div>
+        <div class="ametric-label">Personal View Growth</div>
+        <div class="ametric-note">10 views → 500+ views</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="skills-section">
+  <div class="wrap">
+    <div class="lbl">Expertise</div>
+    <h2 class="big-title">Skills</h2>
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skill-row">
+        <div class="skill-head"><span class="skill-name">Reels & TikTok Production</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-head"><span class="skill-name">AI Video Creation</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-head"><span class="skill-name">Social Media Strategy</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-head"><span class="skill-name">Audience Growth</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-head"><span class="skill-name">Content Planning</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-head"><span class="skill-name">Instagram Management</span><span class="skill-pct">88%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-w="88"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-bg-word">LET'S WORK</div>
+  <div class="wrap">
+    <div class="lbl">Available for Work</div>
+    <h2 class="big-title">Let's Create Together</h2>
+    <p class="contact-sub">Open to social media management, content creation, and brand strategy roles.</p>
+    <div class="contact-chips">
+      <a href="https://www.instagram.com/bountyofe?igsh=aWw3ZmNlOWhua2ky" target="_blank" class="chip">
+        <span class="chip-icon">📸</span> @bountyofe
+      </a>
+      <a href="mailto:ofebounty@gmail.com" class="chip">
+        <span class="chip-icon">✉️</span> ofebounty@gmail.com
+      </a>
+      <a href="https://wa.me/2348059412607" target="_blank" class="chip">
+        <span class="chip-icon">💬</span> WhatsApp
+      </a>
+    </div>
+    <div class="footer">© 2026 Ofe Bounty Uko · Content Creator & Social Media Strategist</div>
+  </div>
+</div>
+
+<script>
+  const fills = document.querySelectorAll('.skill-fill');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.w + '%';
+      }
+    });
+  }, { threshold: 0.3 });
+  fills.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
